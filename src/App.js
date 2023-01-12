@@ -1,8 +1,11 @@
 import React from "react";
+import Navbar from "./components/Navbar";
 
 function App() {
   return (
-    <div>My Shopping Cart</div>
+    <React.Fragment>
+      <Navbar/>
+    </React.Fragment>
   );
 }
 
