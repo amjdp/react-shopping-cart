@@ -2,11 +2,13 @@ import React, {useState} from "react";
 import Navbar from "./components/Navbar";
 import Cart from "./components/Cart";
 import Home from "./components/Home";
+import "./App.css";
 
 function App() {
 
   const [show, setShow] = useState(true);
   const [cart, setCart] = useState([]);
+  const [warning, setWarning] = useState(false);
 
   const handleClick = (item) => {
     // check whether this cart is already added or not
@@ -15,8 +17,13 @@ function App() {
       if (item.id === product.id)
       isPresent = true;
     })
-    if (isPresent)
-    return;
+    if (isPresent) {
+      setWarning(true);
+      setTimeout(() => {
+        setWarning(false);
+      },2000);
+      return;
+    }
     // if not added push this item to cart
     setCart([...cart, item])
   }
@@ -26,6 +33,10 @@ function App() {
       <Navbar size={cart.length}/>
       <Home handleClick={handleClick} />
       <Cart/>
+      {/* warning - if item is already added to cart  */}
+      {
+			warning && <div className='warning'>Item is already added to your cart</div>
+		  }
     </React.Fragment>
   );
 }
