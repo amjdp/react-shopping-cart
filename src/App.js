@@ -9,7 +9,16 @@ function App() {
   const [cart, setCart] = useState([]);
 
   const handleClick = (item) => {
-    console.log(item);
+    // check whether this cart is already added or not
+    let isPresent = false;     
+    cart.forEach((product) => {
+      if (item.id === product.id)
+      isPresent = true;
+    })
+    if (isPresent)
+    return;
+    // if not added push this item to cart
+    setCart([...cart, item])
   }
 
   return (
