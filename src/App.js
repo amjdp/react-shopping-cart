@@ -30,9 +30,13 @@ function App() {
 
   return (
     <React.Fragment>
-      <Navbar size={cart.length}/>
+      <Navbar size={cart.length} setShow={setShow} />
+      {/* state - to switch the screen between card component and product component */}
+      {
+        show ? <Home handleClick={handleClick} /> : <Cart cart={cart} setCart={setCart} />
+      }
       <Home handleClick={handleClick} />
-      <Cart/>
+      <Cart cart={cart} setCart={setCart} />
       {/* warning - if item is already added to cart  */}
       {
 			warning && <div className='warning'>Item is already added to your cart</div>
