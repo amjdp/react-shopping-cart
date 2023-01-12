@@ -1,8 +1,27 @@
 import React, {useState} from 'react';
+import { useEffect } from 'react';
 import "./Cart.css";
 
 function Cart({cart, setCart}) {
     const [price, setPrice] = useState(0);
+
+    const handlePrice = () => {
+        let ans = 0;
+        cart.map((item) => (
+            ans += item.amount * item.price
+        ))
+        setPrice(ans); // update price
+    }
+
+    const handleRemove = (id) => {
+        const arr = cart.filter((item) => item.id !== id);
+        setCart(arr);
+        handlePrice();
+    }
+
+    useEffect(() => {
+        handlePrice();
+    })
 
     return(
         <article>
@@ -20,7 +39,7 @@ function Cart({cart, setCart}) {
                         </div>
                         <div>
                             <span>{item.price}</span>
-                            <button> Remove </button>
+                            <button onClick={() => handleRemove(item.id)}> Remove </button>
                         </div>
                     </div>
                 ))
