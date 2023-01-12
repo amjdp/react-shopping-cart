@@ -33,9 +33,9 @@ function Cart({cart, setCart, handleChange}) {
                             <p>{item.title}</p>
                         </div>
                         <div>
-                            <button onClick={() => handleChange(item, "+")}> + </button>
+                            <button onClick={() => handleChange(item, +1)}> + </button>
                             <button>{item.amount}</button>
-                            <button onClick={() => handleChange(item, "-")}> - </button>
+                            <button onClick={() => handleChange(item, -1)}> - </button>
                         </div>
                         <div>
                             <span>{item.price}</span>

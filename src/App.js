@@ -29,9 +29,19 @@ function App() {
   }
 
   // d for operator ( "+"" or "-" )
-  const handleChange = (item, d) => { 
-    console.log(item, d);    
-  }
+  const handleChange = (item, d) =>{
+		let ind = -1;
+		cart.forEach((data, index)=>{
+			if (data.id === item.id)
+				ind = index;
+		});
+		const tempArr = cart;
+		tempArr[ind].amount += d;
+		
+		if (tempArr[ind].amount === 0)
+			tempArr[ind].amount = 1;
+		setCart([...tempArr])
+	}
 
   return (
     <React.Fragment>
@@ -40,8 +50,6 @@ function App() {
       {
         show ? <Home handleClick={handleClick} /> : <Cart cart={cart} setCart={setCart} handleChange={handleChange} />
       }
-      <Home handleClick={handleClick} />
-      <Cart cart={cart} setCart={setCart} />
       {/* warning - if item is already added to cart  */}
       {
 			warning && <div className='warning'>Item is already added to your cart</div>
