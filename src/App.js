@@ -28,12 +28,17 @@ function App() {
     setCart([...cart, item])
   }
 
+  // d for operator ( "+"" or "-" )
+  const handleChange = (item, d) => { 
+    console.log(item, d);    
+  }
+
   return (
     <React.Fragment>
       <Navbar size={cart.length} setShow={setShow} />
       {/* state - to switch the screen between card component and product component */}
       {
-        show ? <Home handleClick={handleClick} /> : <Cart cart={cart} setCart={setCart} />
+        show ? <Home handleClick={handleClick} /> : <Cart cart={cart} setCart={setCart} handleChange={handleChange} />
       }
       <Home handleClick={handleClick} />
       <Cart cart={cart} setCart={setCart} />

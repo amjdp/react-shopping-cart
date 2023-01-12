@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import { useEffect } from 'react';
 import "./Cart.css";
 
-function Cart({cart, setCart}) {
+function Cart({cart, setCart, handleChange}) {
     const [price, setPrice] = useState(0);
 
     const handlePrice = () => {
@@ -33,9 +33,9 @@ function Cart({cart, setCart}) {
                             <p>{item.title}</p>
                         </div>
                         <div>
-                            <button> + </button>
+                            <button onClick={() => handleChange(item, "+")}> + </button>
                             <button>{item.amount}</button>
-                            <button> - </button>
+                            <button onClick={() => handleChange(item, "-")}> - </button>
                         </div>
                         <div>
                             <span>{item.price}</span>
