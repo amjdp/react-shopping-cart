@@ -8,10 +8,14 @@ function App() {
   const [show, setShow] = useState(true);
   const [cart, setCart] = useState([]);
 
+  const handleClick = (item) => {
+    console.log(item);
+  }
+
   return (
     <React.Fragment>
       <Navbar size={cart.length}/>
-      <Home/>
+      <Home handleClick={handleClick} />
       <Cart/>
     </React.Fragment>
   );

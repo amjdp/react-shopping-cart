@@ -1,7 +1,7 @@
 import React from 'react';
 import "./Cards.css";
 
-function Cards({item}) { // pass item as props
+function Cards({item, handleClick}) { // pass item as props
 
     const {title, author, price, img} = item;
 
@@ -14,7 +14,7 @@ function Cards({item}) { // pass item as props
             <p>{title}</p>
             <p>{author}</p>
             <p>Price - {price}Rs</p>
-            <button>Add to Cart</button>
+            <button onClick={() => handleClick(item)}>Add to Cart</button>
         </div>
     </div>
     );
