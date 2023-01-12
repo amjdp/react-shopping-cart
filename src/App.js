@@ -10,7 +10,7 @@ function App() {
 
   return (
     <React.Fragment>
-      <Navbar/>
+      <Navbar size={cart.length}/>
       <Home/>
       <Cart/>
     </React.Fragment>
